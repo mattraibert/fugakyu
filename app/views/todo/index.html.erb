@@ -1,0 +1,19 @@
+<h1>Here's a list of things you do daily</h1>
+
+<table>
+  <tr>
+    <th>Description</th>
+    <th>Frequency</th>
+    <th>~</th>
+  </tr>
+
+<% @activities.each do |activity| %>
+  <tr>
+    <td><%=h activity.description %></td>
+    <td><%=h activity.frequency %></td>
+    <td><%= link_to 'X', new_activity_achievement_path(activity) %></td>
+  </tr>
+<% end %>
+
+</table>
+

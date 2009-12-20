@@ -1,0 +1,20 @@
+<h1>Here's a list of things you do regularly</h1>
+
+<table>
+  <tr>
+    <th>Description</th>
+    <th>Frequency</th>
+  </tr>
+
+<% @activities.each do |activity| %>
+  <tr>
+    <td><%=h activity.description %></td>
+    <td><%=h activity.frequency %></td>
+    <td><%= link_to 'Show', activity %></td>
+    <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
+    <td><%= link_to 'Destroy', activity, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />

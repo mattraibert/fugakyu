@@ -2,12 +2,15 @@
 
 <table>
   <tr>
+    <th>Owner</th>
     <th>Activity</th>
     <th>Date</th>
+    <th></th>
   </tr>
 
 <% @achievements.each do |achievement| %>
   <tr>
+    <td><%=h achievement.user.login %></td>
     <td><%=h achievement.activity.description %></td>
     <td><%=h achievement.date %></td>
     <td><%= link_to 'Destroy', achievement, :confirm => 'Are you sure?', :method => :delete %></td>

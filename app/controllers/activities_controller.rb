@@ -43,6 +43,7 @@ class ActivitiesController < ApplicationController
   # POST /activities.xml
   def create
     @activity = Activity.new(params[:activity])
+    @activity.user = self.current_user
 
     respond_to do |format|
       if @activity.save

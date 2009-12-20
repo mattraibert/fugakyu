@@ -27,10 +27,9 @@ class AchievementsController < ApplicationController
   # GET /achievements/new.xml
   def new
     @activity = Activity.find(params[:activity_id])
-    @today = Date.today
-
     @achievement = Achievement.new(:activity => @activity, 
-                                   :date => @today)
+                                   :date => Date.today,
+                                   :user => self.current_user)
     @achievement.save
     redirect_to(todo_path(@activity.frequency))
   end
@@ -42,21 +41,21 @@ class AchievementsController < ApplicationController
 
   # POST /achievements
   # POST /achievements.xml
-  def create
-    @achievement = Achievement.new(params[:achievement])
-
-    respond_to do |format|
-      if @achievement.save
-        flash[:notice] = 'Achievement was successfully created.'
-        format.html { redirect_to(todo_path(@activity.frequency)) }
-        format.xml  { render :xml => @achievement, :status => :created, :location => @achievement }
-      else
-        format.html { redirect_to(todo_path(@activity.frequency)) }
-
-        format.xml  { render :xml => @achievement.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
+#  def create
+#    @achievement = Achievement.new(params[:achievement])
+#    
+#    respond_to do |format|
+#      if @achievement.save
+#        flash[:notice] = 'Achievement was successfully created.'
+#        format.html { redirect_to(todo_path(@activity.frequency)) }
+#        format.xml  { render :xml => @achievement, :status => :created, :location => @achievement }
+#      else
+#        format.html { redirect_to(todo_path(@activity.frequency)) }
+#
+#        format.xml  { render :xml => @achievement.errors, :status => :unprocessable_entity }
+#     end
+#   end
+# end
 
   # PUT /achievements/1
   # PUT /achievements/1.xml

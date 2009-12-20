@@ -13,6 +13,8 @@
 
 
 <% if logged_in? %>
+<p>Welcome, <%= current_user.login %></p>
+
 <%= link_to "Home", activities_url  %> |
 <%= link_to 'New activity', new_activity_path %> |
 <%= link_to 'Achievements', achievements_path %> |

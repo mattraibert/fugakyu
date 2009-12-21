@@ -1,4 +1,4 @@
-<h1>Here's a list of things you do daily</h1>
+<h1><%= @frequency %> To Do List</h1>
 
 <table>
   <tr>
@@ -11,7 +11,9 @@
   <tr>
     <td><%=h activity.description %></td>
     <td><%=h activity.frequency %></td>
-    <td><%= link_to 'X', new_activity_achievement_path(activity) %></td>
+    <td style="font-size: x-large;">
+      <%= link_to 'X', new_activity_achievement_path(activity) %>
+    </td>
   </tr>
 <% end %>
 

@@ -4,9 +4,16 @@ class TodoController < ApplicationController
 
   def index
     @frequency = params[:frequency]
+    @user = self.current_user
 
-    @activities = self.current_user.activities.by_frequency(@frequency)
+    @activities = @user.activities.by_frequency(@frequency)
+    
+    todays_activities = @user.achievements.today.map { |achievement| 
+      achievement.activity 
+    }
 
+    @activities = @activities - todays_activities
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @activities }

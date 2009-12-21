@@ -5,25 +5,35 @@
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>Activities: <%= controller.action_name %></title>
   <%= stylesheet_link_tag 'scaffold' %>
+  <style>
+    p {width: 400px;}
+  </style>
 </head>
 <body>
 <p style="color: green"><%= flash[:notice] %></p>
 <p style="color: red"><%= flash[:error] %></p>
-
-<%= yield %>
-
-
 <% if logged_in? %>
-
 <%= link_to "Home", activities_url  %> |
 <%= link_to 'New activity', new_activity_path %> |
-<%= link_to 'Achievements', achievements_path %> |
+<%= link_to 'Achievements', achievements_path %> <br />
 <%= link_to 'Today', todo_path("Daily") %> |
 <%= link_to 'Weekly', todo_path("Weekly") %> |
 <%= link_to 'Monthly', todo_path("Monthly") %> |
-<%= link_to 'Yearly', todo_path("Yearly") %> |
+<%= link_to 'Yearly', todo_path("Yearly") %> <br />
 <%= link_to "Log Out (#{current_user.login})", logout_path %>
 <% end %>
 
+<%= yield %>
+<p>Maintain a list of activities to do regularly.  For example, maybe
+you eat breakfast daily, work on your Rails app weekly and donate to
+charity yearly.  You could also keep a list of friends to keep in
+touch with.</p>
+
+<p>Once you've made that list -- the list of goals -- you'll be able
+to mark them off as you achieve them.  They'll re-appear on the
+relevant todo list after the frequency elapses.  For example, suppose
+you say you'll work on your rails app weekly.  When you mark it off on
+a Tuesday, it'll disappear and then show up again on your weekly todo
+list the following Tuesday.</p>
 </body>
 </html>

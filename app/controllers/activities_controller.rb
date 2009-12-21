@@ -4,7 +4,7 @@ class ActivitiesController < ApplicationController
   before_filter :login_required
 
   def index
-    @activities = Activity.all
+    @activities = self.current_user.activities
 
     respond_to do |format|
       format.html # index.html.erb

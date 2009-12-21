@@ -4,7 +4,7 @@ class AchievementsController < ApplicationController
   before_filter :login_required
 
   def index
-    @achievements = Achievement.all
+    @achievements = self.current_user.achievements
 
     respond_to do |format|
       format.html # index.html.erb

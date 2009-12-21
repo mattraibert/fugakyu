@@ -77,8 +77,11 @@ class ActivitiesController < ApplicationController
   # DELETE /activities/1
   # DELETE /activities/1.xml
   def destroy
-    @activity = Activity.find(params[:id])
-    @activity.destroy
+    activity = Activity.find(params[:id])
+    Achievement.find_all_by_activity_id(activity.id).each {|achievement| 
+      achievement.destroy
+    }
+    activity.destroy
 
     respond_to do |format|
       format.html { redirect_to(activities_url) }

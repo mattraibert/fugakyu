@@ -1,7 +1,7 @@
 default_run_options[:pty] = true
 
 set :application, "fugakyu"
-set :repository,  "http://mattraibert.ath.cx/svn/repos/railso/trunk"
+set :repository,  "http://mattraibert.ath.cx/svn/repos/fugakyu/trunk"
 
 set :scm, :subversion
 set :deploy_to, "/var/www/apps/#{application}"

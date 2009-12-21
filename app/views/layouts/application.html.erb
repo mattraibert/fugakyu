@@ -13,7 +13,6 @@
 
 
 <% if logged_in? %>
-<p>Welcome, <%= current_user.login %></p>
 
 <%= link_to "Home", activities_url  %> |
 <%= link_to 'New activity', new_activity_path %> |
@@ -22,7 +21,7 @@
 <%= link_to 'Weekly', todo_path("Weekly") %> |
 <%= link_to 'Monthly', todo_path("Monthly") %> |
 <%= link_to 'Yearly', todo_path("Yearly") %> |
-<%= link_to "Log Out", logout_path %>
+<%= link_to "Log Out (#{current_user.login})", logout_path %>
 <% end %>
 
 </body>

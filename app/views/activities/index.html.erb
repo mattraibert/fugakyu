@@ -2,7 +2,6 @@
 
 <table>
   <tr>
-    <th>Owner</th>
     <th>Description</th>
     <th>Frequency</th>
     <th></th>
@@ -11,7 +10,6 @@
 
 <% @activities.each do |activity| %>
   <tr>
-    <td><%=h activity.user.login %></td>
     <td><%=h activity.description %></td>
     <td><%=h activity.frequency %></td>
     <td><%= link_to 'Edit', edit_activity_path(activity) %></td>

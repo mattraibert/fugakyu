@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091221210816) do
+ActiveRecord::Schema.define(:version => 20091225005908) do
 
   create_table "achievements", :force => true do |t|
     t.integer  "activity_id"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20091221210816) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.integer  "grains"
   end
 
   create_table "invites", :force => true do |t|

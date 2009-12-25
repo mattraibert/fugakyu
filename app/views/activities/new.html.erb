@@ -8,6 +8,10 @@
     <%= f.text_field :description %>
   </p>
   <p>
+    <%= f.label :grains %><br />
+    <%= f.select(:grains, Activity.grain_values) %>
+  </p>
+  <p>
     <%= f.label :frequency %><br />
     <%= f.select(:frequency, Activity.frequencies) %>
   </p>

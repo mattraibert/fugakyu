@@ -1,22 +1,20 @@
 class TodoController < ApplicationController
   
   before_filter :login_required
-
+  
   def index
-    @frequency = params[:frequency]
-    @user = self.current_user
+    @frequency = self.frequency
+    @activities = todo_for(self.frequency)
 
-    @activities = @user.activities.by_frequency(@frequency)
-    
-    todays_activities = @user.achievements.today.map { |achievement| 
-      achievement.activity 
-    }
-
-    @activities = @activities - todays_activities
-    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @activities }
     end
+  end
+  
+  def todo_for(frequency)
+    by_frequency = @current_user.activities.by_frequency(frequency)
+    
+    by_frequency.select { |activity| !activity.done? }
   end
 end

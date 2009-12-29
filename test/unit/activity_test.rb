@@ -56,11 +56,28 @@ class ActivityTest < ActiveSupport::TestCase
     assert !activity.done?
   end
 
+  test "2 Grains activities aren't done if not achieved twice" do
+    activity = make_activity_achieved(Date.today)
+    activity.frequency = "Daily"
+    activity.grains = 2
+    assert !activity.done?
+  end
 
+  test "2 Grains activities are done if achieved twice" do
+    activity = make_activity_achieved(Date.today)
+    activity.frequency = "Daily"
+    activity.grains = 2
+    achievement = Achievement.new(:date => Date.today)
+    
+    activity.achievements += [achievement]
+    assert activity.done?
+  end
+  
   def make_activity_achieved(date)
     achievement = Achievement.new
     achievement.date = date
     activity = Activity.new
+    activity.grains = 1
     activity.achievements = [achievement]
     activity
   end

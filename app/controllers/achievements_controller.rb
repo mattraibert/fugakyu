@@ -31,31 +31,13 @@ class AchievementsController < ApplicationController
                                    :date => Date.today,
                                    :user => self.current_user)
     @achievement.save
-    redirect_to(todo_path(@activity.frequency))
+    redirect_to(todo_path)
   end
 
   # GET /achievements/1/edit
   def edit
     @achievement = Achievement.find(params[:id])
   end
-
-  # POST /achievements
-  # POST /achievements.xml
-#  def create
-#    @achievement = Achievement.new(params[:achievement])
-#    
-#    respond_to do |format|
-#      if @achievement.save
-#        flash[:notice] = 'Achievement was successfully created.'
-#        format.html { redirect_to(todo_path(@activity.frequency)) }
-#        format.xml  { render :xml => @achievement, :status => :created, :location => @achievement }
-#      else
-#        format.html { redirect_to(todo_path(@activity.frequency)) }
-#
-#        format.xml  { render :xml => @achievement.errors, :status => :unprocessable_entity }
-#     end
-#   end
-# end
 
   # PUT /achievements/1
   # PUT /achievements/1.xml

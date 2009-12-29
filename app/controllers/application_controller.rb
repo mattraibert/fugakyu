@@ -8,8 +8,4 @@ class ApplicationController < ActionController::Base
   # See ActionController::RequestForgeryProtection for details
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
-  
-  def method_missing(m, *args, &block)
-    params[m]
-  end
 end

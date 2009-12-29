@@ -3,8 +3,7 @@ class TodoController < ApplicationController
   before_filter :login_required
   
   def index
-    @frequency = self.frequency
-    @activities = todo_for(self.frequency)
+    @activities = todo_list
 
     respond_to do |format|
       format.html # index.html.erb
@@ -12,8 +11,8 @@ class TodoController < ApplicationController
     end
   end
   
-  def todo_for(frequency)
-    by_frequency = @current_user.activities.by_frequency(frequency)
+  def todo_list
+    by_frequency = @current_user.activities
     
     by_frequency.select { |activity| !activity.done? }
   end

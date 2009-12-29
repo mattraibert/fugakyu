@@ -2,7 +2,8 @@
 <table>
   <tr>
     <th>Description</th>
-    <th>Frequency</th>
+    <th>Grains</th>
+    <th>Frequency:</th>
     <th></th>
     <th></th>
   </tr>
@@ -10,6 +11,7 @@
 <% @activities.each do |activity| %>
   <tr>
     <td><%=h activity.description %></td>
+    <td><%=h activity.grains %></td>
     <td><%=h activity.frequency %></td>
     <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
     <td><%= link_to 'Destroy', activity, :confirm => 'Are you sure?', :method => :delete %></td>

@@ -7,7 +7,7 @@ class Activity < ActiveRecord::Base
   }
 
   def done?
-    self.achievements.any? {|achievement| self.recent?(achievement.date) }
+    self.grains == self.achievements.select {|achievement| self.recent?(achievement.date) }.size
   end
 
   def recent?(date)
@@ -23,6 +23,10 @@ class Activity < ActiveRecord::Base
     date > Date.today - 1.week
   end
   
+  def Fortnightly_recent(date)
+    date > Date.today - 2.weeks
+  end
+  
   def Monthly_recent(date)
     date > Date.today - 1.month
   end
@@ -32,7 +36,7 @@ class Activity < ActiveRecord::Base
   end
   
   def self.frequencies
-    ["Daily", "Weekly", "Monthly", "Yearly"]
+    ["Daily", "Weekly", "Fortnightly", "Monthly", "Yearly"]
   end
   
   def self.grain_values

@@ -9,6 +9,6 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :activities, :has_many => :achievements
   map.resources :achievements
-  map.todo 'todo/:frequency', :controller => 'todo'
+  map.todo '/todo', :controller => 'todo'
   map.root :controller => 'activities'
 end

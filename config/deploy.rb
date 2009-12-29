@@ -7,6 +7,7 @@ set :scm, :subversion
 set :deploy_to, "/var/www/apps/#{application}"
 set :user, "mattraibert"
 set :admin_runner, "mattraibert"
+set :migrate_target, :current
 
 server "mattraibert.ath.cx", :app, :web, :db, :primary => true
 
